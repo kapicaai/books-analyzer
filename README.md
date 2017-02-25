@@ -2,7 +2,7 @@
 Text analyzer providing semantic, morphological, frequency and syntactical scan.
 ## Description
 This tool can be useful for reading amateurs and both for linguists. The goal is to provide *graphic representation* of books analysis, classify and to rank literature by different attributes such as mood, some word frequency, or amount of nature description, etc., based on text of book.  After this it is possible to form exact books or authors recommendations and to produce comparative analysis.
-Features:
+## Features:
 - text linguistic analysis 
 - authors and books comparative analysis
 -  classifying and to ranking literature by different attributes
