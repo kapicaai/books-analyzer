@@ -2,10 +2,10 @@
   "name": "books-analyzer",
   "version": "1.0.0",
   "description": "client-server books analyzer",
-  "main": "index.js",
+  "main": "application.js",
   "scripts": {
     "test": "test",
-    "start": "node index.js"
+    "start": "node application.js"
   },
   "keywords": [
     "books",
