@@ -10,7 +10,7 @@ function static_controller(req, res, file) {
   fs.readFile(filePath, (err, data) => {
     if (!err) {
       res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/css');
+  //  res.setHeader('Content-Type', 'text/css');
       res.write(data);
       res.end();
     } else {
