@@ -13,5 +13,8 @@
     "text"
   ],
   "author": "enthusiasm",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "text-miner": "^1.0.5"
+  }
 }
