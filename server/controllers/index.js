@@ -1,9 +1,12 @@
 
 
-function index(req, res) {
+function index_controller(req, res) {
      res.statusCode = 200;
-     res.setHeader('Content-Type', "text/plain");
-     res.end('Hello');
+     res.setHeader('Content-Type', "text/html");
+     res.end('<html>' +
+     '<head><title>Index</title>' +
+     '<link rel=\'stylesheet\' type=\'text/css\' href=\'../../public/stylesheets/lmain.css\'></head>' +
+     '<body><h1>Hello world</h1></body></html>');
  }
 
- module.exports.index = index;
+ module.exports.controller = index_controller;

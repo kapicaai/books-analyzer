@@ -1,13 +1,14 @@
 /*jshint esversion:6*/
-const index = require("../controllers/index");
+const index_controller = require("../controllers/index");
+const static_controller = require("../controllers/static");
+const error404_controller =
+ require("../controllers/errors/error404");
 
 var routingTable = [
-    new Url(new RegExp("^/$"), index.index),
-    new Url(new RegExp("^/index$"), index.index),
-    new Url(new RegExp("^.*$"), (req, res) => {
-        res.statusCode = 404;
-        res.end();
-    })
+    new Url(new RegExp("/public/(.*)"), static_controller.controller),
+    new Url(new RegExp("^/$"), index_controller.controller),
+    new Url(new RegExp("^/index$"), index_controller.controller),
+    new Url(new RegExp("^.*$"), error404_controller.controller),
 ];
 
 /**

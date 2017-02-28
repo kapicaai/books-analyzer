@@ -8,7 +8,8 @@ function Router(table) {
     for (let url in routeTable) {
       let res = routeTable[url].urlPattern.exec(request.url);
       if (res) {
-        routeTable[url].controller(request, response);
+        let params = res.slice(1);
+        routeTable[url].controller(request, response, ...params);
         break;
       }
     }
