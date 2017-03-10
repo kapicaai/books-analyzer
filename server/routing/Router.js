@@ -9,7 +9,7 @@ function Router(table) {
       ({urlPattern}) => urlPattern.test(request.url));
 
     if (routePath) {
-      let params = routePath.urlPatterns
+      let params = routePath.urlPattern
         .exec(request.url)
         .slice(1);
       routePath.controller(request, response, ...params);
