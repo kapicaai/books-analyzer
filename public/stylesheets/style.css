@@ -1,0 +1,79 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+    font-family: "Gibson","Helvetica Neue",HelveticaNeue,Arial,sans-serif;
+}
+
+body {
+    background-attachment: fixed;
+    background-repeat: repeat;
+}
+
+h1 {
+    font-family: "Helvetica Neue", HelveticaNeue, Arial, sans-serif;
+    font-size: 5em;
+}
+
+.builtin-img {
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.img-container {
+    margin: 2%;
+
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.img-container img {
+    margin: auto;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    background-color: black;
+    padding: 1%;
+}
+.menu a, .auth-container a {
+    color: white;
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: auto;
+}
+.represent {
+    background-image: url("../images/Books-That-Will-Make-You-Proud-And-Satisfied-To-Have-Read.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+
+    text-align: center;
+    padding-top: 39%;    
+
+}
+.description-container {
+    background-color: white;
+    padding: 2.5%;
+    padding-left: 8%;
+    padding-right: 8%;
+    text-align: justify;
+    font-family: "Futura","Gibson","Helvetica Neue",HelveticaNeue,Arial,sans-serif;
+    font-size: 1.2em;
+    box-shadow: 1 0 10px;
+}
