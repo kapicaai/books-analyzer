@@ -1,3 +1,10 @@
+'use strict';
+const express = require('express');
+const router = express.Router();
+
+
+router.get('/', author_controller);
+
 function author_controller(req, res) {
     if ("GET" === req.method) {
         res.statusCode = 200;
@@ -16,4 +23,4 @@ function author_controller(req, res) {
     }
 }
 
-module.exports.controller = author_controller;
+module.exports = router;
