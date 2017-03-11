@@ -15,6 +15,7 @@
   "author": "enthusiasm",
   "license": "ISC",
   "dependencies": {
+    "sentence-splitter": "^2.2.0",
     "text-miner": "^1.0.5"
   }
 }
