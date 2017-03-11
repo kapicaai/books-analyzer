@@ -2,7 +2,7 @@
 var contentTypes = {
   json: 'application/json; charset=UTF-8',
   xml: 'application/xml'
-}
+};
 
 function isSuccessful(statusCode) {
   if (statusCode < 400) {
@@ -29,7 +29,7 @@ class RestClient {
           fullfill(req.responseText);
         else
           reject(req.status, req.statusText);
-      })
+      });
 
       req.send();
     });
@@ -48,7 +48,7 @@ class RestClient {
           fullfill(req.status);
         else
           reject(req.status, req.statusText);
-      })
+      });
 
       req.send(body);
     });

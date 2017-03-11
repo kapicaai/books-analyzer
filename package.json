@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "client-server books analyzer",
   "main": "application.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kapicaai/books-analyzer.git"
+  },
   "scripts": {
     "test": "test",
     "start": "node application.js"
@@ -15,8 +19,12 @@
   "author": "enthusiasm",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
     "mongoose": "^4.8.5",
     "sentence-splitter": "^2.2.0",
+    "serve-favicon": "^2.4.1",
     "text-miner": "^1.0.5"
   }
 }
