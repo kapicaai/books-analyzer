@@ -1,4 +1,4 @@
-/*jshint esversion:6*/
+
 const http = require('http');
 const route = require('./server/routing/Router');
 const routeTable = require('./server/routing/RoutingTable');
