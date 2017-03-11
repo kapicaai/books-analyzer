@@ -25,7 +25,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api', apiRouter);
 
-app.get('/', require('./server/controllers/index.js').controller);
 
 app.listen(port, () =>{
     console.log(`Listen at ${address}:${port}`);
