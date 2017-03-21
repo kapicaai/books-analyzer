@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var bookSchema = mongoose.schema({
+var bookSchema = new Schema({
   name: String,
   author: {type: Schema.Types.ObjectId, ref: 'Author'},
   description: String,
@@ -10,5 +11,5 @@ var bookSchema = mongoose.schema({
   year: String
 });
 
-
-module.exports.shema = mongoose.model('Book', bookSchema);
+var  Book = mongoose.model('Book', bookSchema);
+module.exports = Book;
