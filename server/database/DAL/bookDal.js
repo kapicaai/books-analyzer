@@ -71,3 +71,10 @@ function deleteOne(request){
     return err;
   });
 }
+
+module.exports.getAll = getAll;
+module.exports.getById = getById;
+module.exports.getByName = getByName;
+module.exports.insert = insert;
+module.exports.update = update;
+module.exports.deleteOne = deleteOne;
