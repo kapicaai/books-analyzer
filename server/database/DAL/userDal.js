@@ -1,13 +1,8 @@
-//TODO extract mongoose and db stuff to separate file
 //TODO ref to books
 //TODO ref to authors
-var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+var db = require('./mongooseObj').db;
 
 var User = require("../models/user");
-
-mongoose.connect('mongodb://localhost:27017/test');
-var db = mongoose.connection;
 
 function getAll(){
   User.find({}).exec()
@@ -60,7 +55,6 @@ function update(request){
     user.demail = request.email,
     user.books = request.books;
     user.authors = request.authors;
-  }
 
     return user.save();
   }).catch(function(err){
@@ -74,10 +68,3 @@ function deleteOne(request){
     return err;
   });
 }
-
-db.once('open', function(){
-  console.log('connected to db');
-});
-db.on('error', function(){
-  console.log('db error');
-});

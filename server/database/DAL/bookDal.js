@@ -1,12 +1,7 @@
-//TODO extract mongoose and db stuff to separate file
 //TODO ref to author
-var mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
+var db = require('./mongooseObj').db;
 
-var Book = require("../models/user");
-
-mongoose.connect('mongodb://localhost:27017/test');
-var db = mongoose.connection;
+var Book = require("../models/book");
 
 function getAll(){
   Book.find({}).exec()
@@ -76,10 +71,3 @@ function deleteOne(request){
     return err;
   });
 }
-
-db.once('open', function(){
-  console.log('connected to db');
-});
-db.on('error', function(){
-  console.log('db error');
-});
