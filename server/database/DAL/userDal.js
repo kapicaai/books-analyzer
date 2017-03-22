@@ -1,68 +1,66 @@
 //TODO extract mongoose and db stuff to separate file
-//TODO ref to author
+//TODO ref to books
+//TODO ref to authors
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-var Book = require("../models/user");
+var User = require("../models/user");
 
 mongoose.connect('mongodb://localhost:27017/test');
 var db = mongoose.connection;
 
 function getAll(){
-  Book.find({}).exec()
-  .then(function(books){
-    return books;
+  User.find({}).exec()
+  .then(function(users){
+    logGet(users);
+    return users;
   }).catch(function(err){
     return err;
   });
 }
 
 function getById(request) {
-  Book.findById(request.bookId).exec()
-  .then(function(book){
-    return book;
+  User.findById(request.userId).exec()
+  .then(function(user){
+    return user;
   }).catch(function(err){
     return err;
   });
 }
 
 function getByName(request) {
-  Book.findOne({'name': request.name}).exec()
-  .then(function(book){
-    return book;
+  User.findOne({'name': request.name}).exec()
+  .then(function(user){
+    return user;
   }).catch(function(err){
     return err;
   });
 }
 
 function insert(request){
-  var book = new Book({
+  var user = new User({
     name: request.name,
-    author: request.author,
-    description: request.description,
-    image: request.image,
-    genre: request.genre,
-    text: request.text,
-    year: request.year
+    passwordCache: request.passwordCache,
+    email: request.email,
   });
 
-  book.save(function(err) {
+  user.save(function(err) {
      if (err) {
        return err;
      }
    });
+
 }
 
 function update(request){
-  Book.findById(request.bookId).exec()
-  .then(function(book){
-    book.name = request.name;
-    book.author = request.author;
-    book.description = request.description;
-    book.image = request.image;
-    book.genre = request.genre;
-    book.text = request.text;
-    book.year = request.year;
+  User.findById(request.userId).exec()
+  .then(function(user){
+    user.name = request.name;
+    user.passwordCache = request.passwordCache,
+    user.demail = request.email,
+    user.books = request.books;
+    user.authors = request.authors;
+  }
 
     return user.save();
   }).catch(function(err){
@@ -71,7 +69,7 @@ function update(request){
 }
 
 function deleteOne(request){
-  Book.findByIdAndRemove(request.bookId).exec()
+  User.findByIdAndRemove(request.userId).exec()
   .catch(function(err){
     return err;
   });
