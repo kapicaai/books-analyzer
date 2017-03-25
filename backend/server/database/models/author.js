@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 
-var authorSchema = mongoose.schema({
+var authorSchema = new Schema({
   name: String,
   books: [{type: Schema.Types.ObjectId, ref: 'Book'}],
   portrait: String,
@@ -8,4 +9,5 @@ var authorSchema = mongoose.schema({
   wikiLink: { type: Schema.Types.ObjectId, match: [/(https?:\/\/)?(www\.)?(.*)/g] }
 });
 
-module.exports.shema = mongoose.model('Author', authorSchema);
+var Author  = mongoose.model('Author', authorSchema);
+module.exports = Author;
