@@ -1,26 +1,114 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
+const db = require('../../database/DAL/userDal');
 
+router.get('/', getAll);
 
-router.get('/', user_controller);
-
-function user_controller(req, res) {
+function getAll(req, res) {
     if ("GET" === req.method) {
         res.statusCode = 200;
         res.setHeader('Content-Type', "application/json");
         res.end(JSON.stringify({
-            id: 1,
-            name: "Vasya Pupkin",
-            passwordCache: "Yea, sure, i gonna send it right to you.",
-            email: "Some.stupid.email@on.some.domain",
-            books: [1, 1],
-            authors: [1],
+          db.getAll();
         }));
     } else {
         res.statusCode = 400;
         res.end();
     }
 }
+
+router.get('/:id', getById);
+
+function getById(req, res) {
+    if ("GET" === req.method) {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', "application/json");
+        res.end(JSON.stringify({
+          db.getById(req.params);
+        }));
+    } else {
+        res.statusCode = 400;
+        res.end();
+    }
+}
+
+router.get('/:name', getByName);
+
+function getById(req, res) {
+    if ("GET" === req.method) {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', "application/json");
+        res.end(JSON.stringify({
+          db.getByName(req.params);
+        }));
+    } else {
+        res.statusCode = 400;
+        res.end();
+    }
+}
+
+router.get('/:id', getById);
+
+function getById(req, res) {
+    if ("GET" === req.method) {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', "application/json");
+        res.end(JSON.stringify({
+          db.getById(req.params);
+        }));
+    } else {
+        res.statusCode = 400;
+        res.end();
+    }
+}
+
+router.post('/', insert);
+
+function insert(req, res) {
+    if(!req.body) return res.statusCode(400);
+    if ("POST" === req.method) {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', "application/json");
+        res.end(JSON.stringify({
+          db.insert(req.body);
+        }));
+    } else {
+        res.statusCode = 400;
+        res.end();
+    }
+}
+
+router.put('/', update);
+
+function update(req, res) {
+    if(!req.body) return res.statusCode(400);
+    if ("PUT" === req.method) {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', "application/json");
+        res.end(JSON.stringify({
+          db.update(req.body);
+        }));
+    } else {
+        res.statusCode = 400;
+        res.end();
+    }
+}
+
+router.delete('/:id', deleteOne);
+
+function deleteOne(req, res) {
+    if ("DELETE" === req.method) {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', "application/json");
+        res.end(JSON.stringify({
+          db.deleteOne(req.params);
+        }));
+    } else {
+        res.statusCode = 400;
+        res.end();
+    }
+}
+
 
 module.exports = router;

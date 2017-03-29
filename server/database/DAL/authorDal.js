@@ -14,7 +14,7 @@ function getAll(){
 }
 
 function getById(request) {
-  Author.findById(request.id).exec()
+  Author.findById(request.authorId).exec()
   .then(function(author){
     return author;
   }).catch(function(err){
@@ -49,7 +49,7 @@ function insert(request){
 }
 
 function update(request){
-  Author.findById(request._id).exec()
+  Author.findById(request.authorId).exec()
   .then(function(author){
     author.name = request.name;
     author.books = request.books;
@@ -64,7 +64,7 @@ function update(request){
 }
 
 function deleteOne(request){
-  Author.findByIdAndRemove(request._id).exec()
+  Author.findByIdAndRemove(request.authorId).exec()
   .catch(function(err){
     return err;
   });

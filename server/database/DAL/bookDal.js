@@ -6,17 +6,14 @@ var Book = require("../models/book");
 function getAll(){
   Book.find({}).exec()
   .then(function(books){
-    console.log(books[0]);
     return books;
   }).catch(function(err){
     return err;
   });
 }
 
-var s = getAll();
-
 function getById(request) {
-  Book.findById(request.id).exec()
+  Book.findById(request.bookId).exec()
   .then(function(book){
     return book;
   }).catch(function(err){
@@ -52,7 +49,7 @@ function insert(request){
 }
 
 function update(request){
-  Book.findById(request._id).exec()
+  Book.findById(request.bookId).exec()
   .then(function(book){
     book.name = request.name;
     book.author = request.author;
@@ -69,7 +66,7 @@ function update(request){
 }
 
 function deleteOne(request){
-  Book.findByIdAndRemove(request._id).exec()
+  Book.findByIdAndRemove(request.bookId).exec()
   .catch(function(err){
     return err;
   });
