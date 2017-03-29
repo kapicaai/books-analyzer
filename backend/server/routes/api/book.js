@@ -10,7 +10,7 @@ function getAll(req, res) {
         res.statusCode = 200;
         res.setHeader('Content-Type', "application/json");
         res.end(JSON.stringify({
-          db.getAll();
+          db.getAll()
         }));
     } else {
         res.statusCode = 400;
@@ -25,7 +25,7 @@ function getById(req, res) {
         res.statusCode = 200;
         res.setHeader('Content-Type', "application/json");
         res.end(JSON.stringify({
-          db.getById(req.params);
+          db.getById(req.params)
         }));
     } else {
         res.statusCode = 400;
@@ -40,7 +40,7 @@ function getById(req, res) {
         res.statusCode = 200;
         res.setHeader('Content-Type', "application/json");
         res.end(JSON.stringify({
-          db.getByName(req.params);
+          db.getByName(req.params)
         }));
     } else {
         res.statusCode = 400;
@@ -55,7 +55,7 @@ function getById(req, res) {
         res.statusCode = 200;
         res.setHeader('Content-Type', "application/json");
         res.end(JSON.stringify({
-          db.getById(req.params);
+          db.getById(req.params)
         }));
     } else {
         res.statusCode = 400;
@@ -71,7 +71,7 @@ function insert(req, res) {
         res.statusCode = 200;
         res.setHeader('Content-Type', "application/json");
         res.end(JSON.stringify({
-          db.insert(req.body);
+          db.insert(req.body)
         }));
     } else {
         res.statusCode = 400;
@@ -87,7 +87,7 @@ function update(req, res) {
         res.statusCode = 200;
         res.setHeader('Content-Type', "application/json");
         res.end(JSON.stringify({
-          db.update(req.body);
+          db.update(req.body)
         }));
     } else {
         res.statusCode = 400;
@@ -102,7 +102,7 @@ function deleteOne(req, res) {
         res.statusCode = 200;
         res.setHeader('Content-Type', "application/json");
         res.end(JSON.stringify({
-          db.deleteOne(req.params);
+          db.deleteOne(req.params)
         }));
     } else {
         res.statusCode = 400;
