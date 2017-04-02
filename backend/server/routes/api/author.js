@@ -1,26 +1,18 @@
 'use strict';
 const express = require('express');
 const router = express.Router();
+const db = require('../../database/DAL/authorDal');
+const CRUD = require('./common.js')(db);
 
+router.get('/', CRUD.getAll);
 
-router.get('/', author_controller);
+router.get('/:id', CRUD.getById);
 
-function author_controller(req, res) {
-    if ("GET" === req.method) {
-        res.statusCode = 200;
-        res.setHeader('Content-Type', "application/json");
-        res.end(JSON.stringify({
-            id: 1,
-            name: "Homer",
-            books: [1],
-            portrait: "And.... it's gone",
-            info: "See it one point down",
-            wikiLink: "https://en.wikipedia.org/wiki/Homer"
-        }));
-    } else {
-        res.statusCode = 400;
-        res.end();
-    }
-}
+router.post('/', CRUD.insert);
+
+router.put('/', CRUD.update);
+
+router.delete('/:id', CRUD.deleteOne);
+
 
 module.exports = router;
