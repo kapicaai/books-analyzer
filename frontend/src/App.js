@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { onBooksGet } from './requests';
 
 class App extends Component {
+  
   render() {
     return (
       <div className="App">
@@ -12,7 +14,10 @@ class App extends Component {
         </div>
         <p className="App-intro">
           I just got started!
+          <br/>
+          <button id="getBook" onClick={onBooksGet}>Get my book!</button>
         </p>
+        <div id="book"></div>
       </div>
     );
   }

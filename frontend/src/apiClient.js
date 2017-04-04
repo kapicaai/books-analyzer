@@ -4,6 +4,14 @@ var contentTypes = {
   xml: 'application/xml'
 };
 
+const baseUrl = "http://localhost:8080/api";
+
+const resources = {
+  book: '/book/',
+  author: '/author/',
+  user: '/user/'
+}
+
 function isSuccessful(statusCode) {
   if (statusCode < 400) {
     return true;
@@ -25,8 +33,10 @@ class RestClient {
 
     var promise = new Promise(function (fullfill, reject) {
       req.addEventListener("load", function () {
-        if (isSuccessful(req.status))
+        if (isSuccessful(req.status)) {
           fullfill(req.responseText);
+          console.log(req.responseText);
+        }
         else
           reject(req.status, req.statusText);
       });
@@ -55,4 +65,4 @@ class RestClient {
   }
 }
 
-//export { contentTypes, RestClient };
+export { baseUrl, resources, contentTypes, RestClient };
