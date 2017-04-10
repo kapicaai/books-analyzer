@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { onBooksGet } from './requests';
+//import { onBooksGet } from './requests';
+import bookMock from '../mock/book.json';
+import {Book} from './components/Book';
 
 class App extends Component {
   
   render() {
+    console.log(bookMock);
     return (
       <div className="App">
         <div className="App-header">
@@ -15,9 +18,10 @@ class App extends Component {
         <p className="App-intro">
           I just got started!
           <br/>
-          <button id="getBook" onClick={onBooksGet}>Get my book!</button>
+          
         </p>
         <div id="book"></div>
+        <Book book={bookMock}/>
       </div>
     );
   }

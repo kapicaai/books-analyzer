@@ -1,0 +1,9 @@
+{ "name": "Book title",
+  "author": "Some author",
+  "description": "brown fox jumps over the lazy dog",
+  "image": "http://iamfromkomi.ru/wp-content/uploads/RXin_z74nCw.jpg",
+  "genre": ["Genre", "Word", "Mock"],
+  "text": "file link",
+  "year": "1895",
+  "analysis": ""
+  }

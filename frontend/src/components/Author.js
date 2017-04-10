@@ -9,13 +9,18 @@ class Author extends Component {
   render() {
     return (
       <div className="author">
-        <div className="Book-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Book information</h2>
+        <div className="author-title">
+          <img src={props.author.portrait} alt={props.author.name}/>
+          <h1>{props.author.name}</h1>
         </div>
-        <BookInfo book={this.props.book}/>
-        <BookAnalysis book={this.props.book.analysis}/>
-        <div id="book"></div>
+        <div className="description">
+          {props.author.info}
+          <br/>
+          More on <a href={props.author.wikiLink}>Wikipedia</a>
+        </div>
+        <div className="books">
+          some books
+        </div>
       </div>
     );
   }

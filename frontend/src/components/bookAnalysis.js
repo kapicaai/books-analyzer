@@ -1,8 +1,10 @@
+/* eslint-disable */
 import React from 'react';
 import ReactDOM from 'react-dom';
 
 class BookAnalysis extends React.Component {
     constructor() {
+        super();
         this.title;
         this.author;
     }
