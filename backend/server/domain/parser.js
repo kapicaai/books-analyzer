@@ -3,7 +3,8 @@ const tm = require( 'text-miner' );
 
 function getNormalizedCorpus(text){
   var corpus = tm.Corpus(text);
-  corpus.toLower().removeDigits().removeInterpunctuation();
+  corpus.toLower().removeDigits().removeInterpunctuation().removeNewlines();
+  corpus.removeWords(tm.STOPWORDS.EN)
   return corpus;
 }
 
@@ -37,5 +38,3 @@ function getSentences(text){
   return token.type === splitter.Syntax.Sentence;});
   return result;
 }
-
-var x = getSentences("here is. is! some\n is some text");
