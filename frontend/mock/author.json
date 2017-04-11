@@ -1,0 +1,24 @@
+{
+    "name": "",
+    "books": [{ "name": "Book title",
+  "author": "Some author",
+  "description": "brown fox jumps over the lazy dog",
+  "image": "http://iamfromkomi.ru/wp-content/uploads/RXin_z74nCw.jpg",
+  "genre": ["Genre", "Word", "Mock"],
+  "text": "file link",
+  "year": "1895",
+  "analysis": ""
+}, { "name": "Dorian Grey",
+  "author": "Oscar Wilde",
+  "description": "brown fox jumps over the lazy dog",
+  "image": "http://i199.photobucket.com/albums/aa239/Slytherin17/Books/ThePictureofDorianGray.jpg",
+  "genre": ["Genre", "Novel", "Mock"],
+  "text": "file link",
+  "year": "1895",
+  "analysis": ""
+}],
+    "portrait": "http://www.openspacetheatre.org.uk/2011importanceofbeingearnest/oscar-wilde-the-importance-of-being-earnest.jpg",
+    "info": "Oscar Fingal O'Flahertie Wills Wilde (16 October 1854 – 30 November 1900) was an Irish playwright, novelist, essayist, and poet. After writing in different forms throughout the 1880s, he became one of London's most popular playwrights in the early 1890s. He is remembered for his epigrams, his novel The Picture of Dorian Gray, his plays, as well as the circumstances of his imprisonment and early death. Wilde's parents were successful Anglo-Irish, Dublin intellectuals. Their son became fluent in French and German early in life. At university, Wilde read Greats; he proved himself to be an outstanding classicist, first at Dublin, then at Oxford. He became known for his involvement in the rising philosophy of aestheticism, led by two of his tutors, Walter Pater and John Ruskin. After university, Wilde moved to London into fashionable cultural and social circles.",
+    "wikiLink": "https://en.wikipedia.org/wiki/Oscar_Wilde",
+    "analysis": ["an1", "an2", "an3"]
+}

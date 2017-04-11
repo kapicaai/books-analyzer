@@ -2,17 +2,18 @@
 import React, { Component } from 'react';
 import { BookInfo } from './bookInfo';
 import { BookAnalysis } from './bookAnalysis';
+import bookMock from '../../mock/book.json';
 
 class Book extends Component {
+  constructor() {
+    super();
+    //TODO: get book from server
+    this.book = bookMock;
+  }
+
   render() {
     return (
-      <div className="book">
-        <div className="book-header">
-          <h2>Book information</h2>
-        </div>
-        <BookInfo book={this.props.book}/>
-        <div id="book"></div>
-      </div>
+        <BookInfo book={this.book}/>
     );
   }
 }

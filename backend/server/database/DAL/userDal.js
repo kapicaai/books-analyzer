@@ -15,7 +15,7 @@ function getAll(){
 }
 
 function getById(request) {
-  User.findById(request.userId).exec()
+  User.findById(request.id).exec()
   .then(function(user){
     return user;
   }).catch(function(err){
@@ -48,7 +48,7 @@ function insert(request){
 }
 
 function update(request){
-  User.findById(request.userId).exec()
+  User.findById(request._id).exec()
   .then(function(user){
     user.name = request.name;
     user.passwordCache = request.passwordCache,
@@ -63,7 +63,7 @@ function update(request){
 }
 
 function deleteOne(request){
-  User.findByIdAndRemove(request.userId).exec()
+  User.findByIdAndRemove(request._id).exec()
   .catch(function(err){
     return err;
   });
