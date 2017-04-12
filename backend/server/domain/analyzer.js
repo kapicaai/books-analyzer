@@ -7,7 +7,9 @@ function mostFrequentWords(text) {
   vocab.sort(function(a, b) {
     return b.count - a.count
   });
-  return vocab.slice(0, 5);
+  return vocab.map(function(a) {
+    return a.count;
+  }).slice(0, 5);
 }
 
 function PartsOfSpeechFreq(text) {
@@ -20,6 +22,12 @@ function PartsOfSpeechFreq(text) {
 function Analysis(text) {
   this.partsOfSpeech = new PartsOfSpeechFreq(text);
   this.averageSentenceLength = parser(text).getAverageSentLength();
-  this.mostFrequent = mostFrequentWords(text);
+  this.mostFrequentWords = mostFrequentWords(text);
   this.sentiments = polarity(parser(text).getUniqueWordsList());
 }
+
+function getAnalysis(text) {
+  return new Analysis(text);
+}
+
+module.exports = getAnalysis;
