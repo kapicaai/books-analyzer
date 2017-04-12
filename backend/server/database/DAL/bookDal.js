@@ -1,22 +1,18 @@
-//TODO ref to author
 var db = require('./mongooseObj').db;
 
 var Book = require("../models/book");
 
 function getAll(){
-  Book.find({}).exec()
+  return Book.find({}).exec()
   .then(function(books){
-    console.log(books[0]);
     return books;
   }).catch(function(err){
     return err;
   });
 }
 
-var s = getAll();
-
 function getById(request) {
-  Book.findById(request.id).exec()
+  return Book.findById(request.id).exec()
   .then(function(book){
     return book;
   }).catch(function(err){
@@ -25,7 +21,7 @@ function getById(request) {
 }
 
 function getByName(request) {
-  Book.findOne({'name': request.name}).exec()
+  return Book.findOne({'name': request.name}).exec()
   .then(function(book){
     return book;
   }).catch(function(err){
@@ -44,7 +40,7 @@ function insert(request){
     year: request.year
   });
 
-  book.save(function(err) {
+  return book.save(function(err) {
      if (err) {
        return err;
      }
@@ -52,8 +48,8 @@ function insert(request){
 }
 
 function update(request){
-  Book.findById(request._id).exec()
-  .then(function(book){
+  return Book.findById(request._id).exec()
+  .then(function (book){
     book.name = request.name;
     book.author = request.author;
     book.description = request.description;
@@ -63,14 +59,14 @@ function update(request){
     book.year = request.year;
 
     return user.save();
-  }).catch(function(err){
+  }).catch(function (err){
     return err;
   });
 }
 
 function deleteOne(request){
-  Book.findByIdAndRemove(request._id).exec()
-  .catch(function(err){
+  return Book.findByIdAndRemove(request._id).exec()
+  .catch(function (err){
     return err;
   });
 }

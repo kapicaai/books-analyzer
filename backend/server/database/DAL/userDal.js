@@ -1,11 +1,9 @@
-//TODO ref to books
-//TODO ref to authors
 var db = require('./mongooseObj').db;
 
 var User = require("../models/user");
 
 function getAll(){
-  User.find({}).exec()
+  return User.find({}).exec()
   .then(function(users){
     logGet(users);
     return users;
@@ -15,7 +13,7 @@ function getAll(){
 }
 
 function getById(request) {
-  User.findById(request.id).exec()
+  return User.findById(request.id).exec()
   .then(function(user){
     return user;
   }).catch(function(err){
@@ -24,7 +22,7 @@ function getById(request) {
 }
 
 function getByName(request) {
-  User.findOne({'name': request.name}).exec()
+  return User.findOne({'name': request.name}).exec()
   .then(function(user){
     return user;
   }).catch(function(err){
@@ -39,7 +37,7 @@ function insert(request){
     email: request.email,
   });
 
-  user.save(function(err) {
+  return user.save(function(err) {
      if (err) {
        return err;
      }
@@ -48,7 +46,7 @@ function insert(request){
 }
 
 function update(request){
-  User.findById(request._id).exec()
+  return User.findById(request._id).exec()
   .then(function(user){
     user.name = request.name;
     user.passwordCache = request.passwordCache,
@@ -63,7 +61,7 @@ function update(request){
 }
 
 function deleteOne(request){
-  User.findByIdAndRemove(request._id).exec()
+  return User.findByIdAndRemove(request._id).exec()
   .catch(function(err){
     return err;
   });
