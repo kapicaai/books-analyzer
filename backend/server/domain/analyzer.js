@@ -23,6 +23,3 @@ function Analysis(text) {
   this.mostFrequent = mostFrequentWords(text);
   this.sentiments = polarity(parser(text).getUniqueWordsList());
 }
-
-var sentiments = polarity(parser('here is! some bla bla. a little! awesome text text TExt').getUniqueWordsList());
-var t  = parser('here is! some bla bla. a little! awesome text text TExt').getVocabulary();
