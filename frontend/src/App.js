@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import '../public/styles/style.css';
 import {Book} from './components/Book';
 import {Home} from './components/Home';
 import {
@@ -14,15 +15,16 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-        
-      <ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/book">Book</Link></li>
-      </ul>
+      <div className="header">
+        <div className="menu">
+            <Link to="/">(logo)</Link>
+            <Link to="/book">All Books</Link>
+        </div>
+      </div>
 
 
-      <Route exact path="/" component={Home}/>
-      <Route path="/book" component={Book}/>
+      <Route exact path="/book" component={Home}/>
+      <Route path="/book/:id" component={Book}/>
       </div>
       </Router>
     );

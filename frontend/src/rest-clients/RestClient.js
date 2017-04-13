@@ -35,7 +35,6 @@ class RestClient {
       req.addEventListener("load", function () {
         if (isSuccessful(req.status)) {
           fullfill(req.responseText);
-          console.log(req.responseText);
         }
         else
           reject(req.status, req.statusText);

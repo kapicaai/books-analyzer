@@ -1,13 +1,15 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 function LinkItem(props) {
-  return <li><a href={props.element.id}>{props.element.name}</a></li>;
+  return <li><Link to={props.resource + props.element._id}>{props.element.name}</Link></li>;
 }
 
 function LinkList(props) {
-    return (props.elements ? (
+    return (props.elements[0] ? (
         <ul>
-            {props.elements.map((element) => <LinkItem element={element}/>)}
+            {props.elements.map((element) => 
+            <LinkItem key={element._id} element={element} resource={props.resource}/>)}
         </ul>
     ) : (
         <div>

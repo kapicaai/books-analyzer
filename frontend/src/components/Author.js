@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { onBooksGet } from './requests';
 import { BookInfo } from './bookInfo';
 import { BookAnalysis } from './bookAnalysis';
 
-class Author extends Component {
+class AuthorInfo extends Component {
   render() {
     return (
       <div className="author">
@@ -26,4 +25,4 @@ class Author extends Component {
   }
 }
 
-export default App;
+export default AuthorInfo;
