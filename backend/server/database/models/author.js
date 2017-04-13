@@ -6,7 +6,7 @@ var authorSchema = new Schema({
   books: [{type: Schema.Types.ObjectId, ref: 'Book'}],
   portrait: String,
   info: String,
-  wikiLink: { type: Schema.Types.ObjectId, match: [/(https?:\/\/)?(www\.)?(.*)/g] }
+  wikiLink: { type: String, match: [/(https?:\/\/)?(www\.)?(.*)/g] }
 });
 
 var Author  = mongoose.model('Author', authorSchema);
