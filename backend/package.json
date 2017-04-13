@@ -26,8 +26,9 @@
     "mongoose": "^4.8.6",
     "polarity": "^2.0.0",
     "sentence-splitter": "^2.2.0",
-    "serve-favicon": "^2.4.1",
-    "text-miner": "^1.0.5"
+    "serve-favicon": "^2.4.2",
+    "text-miner": "^1.0.5",
+    "wordpos": "^1.1.2"
   },
   "devDependencies": {
     "eslint": "^3.18.0",

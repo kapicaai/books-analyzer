@@ -4,7 +4,7 @@ var db = require('./mongooseObj').db;
 var Author = require("../models/author");
 
 function getAll(){
-  Author.find({}).exec()
+  return Author.find({}).exec()
   .then(function(authors){
     logGet(authors);
     return authors;
@@ -14,7 +14,7 @@ function getAll(){
 }
 
 function getById(request) {
-  Author.findById(request.id).exec()
+  return Author.findById(request.id).exec()
   .then(function(author){
     return author;
   }).catch(function(err){
@@ -23,7 +23,7 @@ function getById(request) {
 }
 
 function getByName(request) {
-  Author.findOne({'name': request.name}).exec()
+  return Author.findOne({'name': request.name}).exec()
   .then(function(author){
     return author;
   }).catch(function(err){
@@ -40,7 +40,7 @@ function insert(request){
     wikiLink: request.wikiLink
   });
 
-  author.save(function(err) {
+  return author.save(function(err) {
      if (err) {
        return err;
      }
@@ -49,7 +49,7 @@ function insert(request){
 }
 
 function update(request){
-  Author.findById(request._id).exec()
+  return Author.findById(request._id).exec()
   .then(function(author){
     author.name = request.name;
     author.books = request.books;
@@ -64,7 +64,7 @@ function update(request){
 }
 
 function deleteOne(request){
-  Author.findByIdAndRemove(request._id).exec()
+  return Author.findByIdAndRemove(request._id).exec()
   .catch(function(err){
     return err;
   });

@@ -15,7 +15,6 @@ function countVerbs(text) {
 
 function countNouns(text) {
   POS.getNouns(text, function (result) {
-    console.log(result.length);
     nouns = result.length;
   });
 }

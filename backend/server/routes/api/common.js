@@ -5,8 +5,9 @@
         if ("GET" === req.method) {
             res.statusCode = 200;
             res.setHeader('Content-Type', "application/json");
-            res.end(JSON.stringify(
-              db.getAll()
+            db.getAll()
+            .then((books) =>
+                res.end(JSON.stringify(books)
             ));
         } else {
             res.statusCode = 400;
@@ -18,8 +19,9 @@
         if ("GET" === req.method) {
             res.statusCode = 200;
             res.setHeader('Content-Type', "application/json");
-            res.end(JSON.stringify(
-              db.getById(req.params)
+            db.getById(req.params)
+            .then((books) =>
+                res.end(JSON.stringify(books)
             ));
         } else {
             res.statusCode = 400;
@@ -32,9 +34,8 @@
         if ("POST" === req.method) {
             res.statusCode = 200;
             res.setHeader('Content-Type', "application/json");
-            res.end(JSON.stringify(
-              db.insert(req.body)
-            ));
+            db.insert(req.body);
+            res.end("OK");
         } else {
             res.statusCode = 400;
             res.end();
@@ -46,9 +47,8 @@
         if ("PUT" === req.method) {
             res.statusCode = 200;
             res.setHeader('Content-Type', "application/json");
-            res.end(JSON.stringify(
-              db.update(req.body)
-            ));
+            db.update(req.body);
+            res.end("OK");
         } else {
             res.statusCode = 400;
             res.end();
@@ -59,9 +59,8 @@
         if ("DELETE" === req.method) {
             res.statusCode = 200;
             res.setHeader('Content-Type', "application/json");
-            res.end(JSON.stringify(
-              db.deleteOne(req.params)
-            ));
+            db.deleteOne(req.params);
+            res.end("OK")
         } else {
             res.statusCode = 400;
             res.end();
