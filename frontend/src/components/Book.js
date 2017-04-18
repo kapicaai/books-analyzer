@@ -2,7 +2,8 @@
 import React, { Component } from 'react';
 import { BookInfo } from './bookInfo';
 import { BookAnalysis } from './bookAnalysis';
-import { BookClient } from '../rest-clients/BookClient';
+import { ObjectRestClient } from '../rest-clients/ObjectRestClient';
+import { resources } from '../rest-clients/RestClient';
 import bookMock from '../../mock/book.json';
 import {
   BrowserRouter as Router,
@@ -14,9 +15,9 @@ class Book extends Component {
   constructor(props) {
     super(props);
     
-    this.apiClient = new BookClient();
+    this.apiClient = new ObjectRestClient(resources.book);
     this.state = {book:{}};
-    this.apiClient.getBook(this.props.match.params.id)
+    this.apiClient.getObject(this.props.match.params.id)
     .then((bookObj) => {
         this.setState({book:bookObj});
     }

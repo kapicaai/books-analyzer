@@ -3,6 +3,7 @@ import './App.css';
 import '../public/styles/style.css';
 import {Book} from './components/Book';
 import {Home} from './components/Home';
+import {AddBook} from './components/AddBook';
 import {
   BrowserRouter as Router,
   Route,
@@ -19,12 +20,14 @@ class App extends Component {
         <div className="menu">
             <Link to="/">(logo)</Link>
             <Link to="/book">All Books</Link>
+            <Link to="/addbook">All Books</Link>
         </div>
       </div>
 
 
       <Route exact path="/book" component={Home}/>
       <Route path="/book/:id" component={Book}/>
+      <Route path="/addbook" component={AddBook}/>
       </div>
       </Router>
     );

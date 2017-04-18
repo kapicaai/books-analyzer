@@ -1,15 +1,16 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {BookClient} from '../rest-clients/BookClient';
+import {ObjectRestClient} from '../rest-clients/ObjectRestClient';
 import {LinkList} from './views/LinkList';
+import { resources } from '../rest-clients/RestClient';
 
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.apiClient = new BookClient();
+        this.apiClient = new ObjectRestClient(resources.book);
         this.state = {books:{}};
-        this.apiClient.getBook()
+        this.apiClient.getObject()
         .then((booksObj) => {
         this.setState({books:booksObj});
         }

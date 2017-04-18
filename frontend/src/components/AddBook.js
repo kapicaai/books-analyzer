@@ -2,42 +2,34 @@
 import React, { Component } from 'react';
 import { BookInfo } from './bookInfo';
 import { BookAnalysis } from './bookAnalysis';
-import { baseUrl, resources, contentTypes, RestClient } from '../rest-clients/RestClient';
+import {ObjectRestClient} from '../rest-clients/ObjectRestClient';
+import { resources } from '../rest-clients/RestClient';
 import {
   BrowserRouter as Router,
   Route,
-  Link
+  Link,
+  Redirect
 } from 'react-router-dom';
+import Form from "react-jsonschema-form";
+import {bookFormSchema} from './form-schemas/bookForm';
 
-class Book extends Component {
-  constructor(props) {
-    super(props);
-    //TODO: get book from server
-    this.apiClient = new RestClient(baseUrl, contentTypes.json);
-    this.state = {book:{}};
-    this.apiClient.get(resources.book, this.props.match.params.id).then(
-        (json) => {
-            this.state.books = JSON.parse(json);
-            console.log("HERE ", this.state.books);
-            this.setState({
-                book:(JSON.parse(json))
-            })
-        },
-        (err, text) => {
-            this.state.book = {
-
-            };
-        }
-    );
-  }
-
-  postBook
+class AddBook extends Component {
 
   render() {
+    const postBook = ({formData}) => {
+    let restClient = new ObjectRestClient(resources.book);
+    restClient.postObject(JSON.parse(formData));
+    setTimeout(function() {
+        (<Redirect to="/book"/>);
+    }, 5);
+  };
+  console.log(bookFormSchema);
     return (
-        <BookInfo book={this.state.book}/>
+        <Form
+        schema={bookFormSchema}
+        onSubmit={postBook} />
     );
   }
 }
 
-export {Book};
+export {AddBook};
