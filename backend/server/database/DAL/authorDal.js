@@ -1,56 +1,42 @@
-//TODO ref to books
-var db = require('./mongooseObj').db;
 
-var Author = require("../models/author");
+const db = require('./mongooseObj').db;
 
-function getAll(){
+const Author = require('../models/author');
+
+function getAll() {
   return Author.find({}).exec()
-  .then(function(authors){
-    logGet(authors);
-    return authors;
-  }).catch(function(err){
-    return err;
-  });
+  .then(authors => authors).catch(err => err);
 }
 
 function getById(request) {
   return Author.findById(request.id).exec()
-  .then(function(author){
-    return author;
-  }).catch(function(err){
-    return err;
-  });
+  .then(author => author).catch(err => err);
 }
 
 function getByName(request) {
-  return Author.findOne({'name': request.name}).exec()
-  .then(function(author){
-    return author;
-  }).catch(function(err){
-    return err;
-  });
+  return Author.findOne({ name: request.name }).exec()
+  .then(author => author).catch(err => err);
 }
 
-function insert(request){
-  var author = new Author({
+function insert(request) {
+  const author = new Author({
     name: request.name,
     books: request.books,
     portrait: request.portrait,
     info: request.info,
-    wikiLink: request.wikiLink
+    wikiLink: request.wikiLink,
   });
 
-  return author.save(function(err) {
-     if (err) {
-       return err;
-     }
-   });
-
+  return author.save((err) => {
+    if (err) {
+      return err;
+    }
+  });
 }
 
-function update(request){
+function update(request) {
   return Author.findById(request._id).exec()
-  .then(function(author){
+  .then((author) => {
     author.name = request.name;
     author.books = request.books;
     author.portrait = request.portrait;
@@ -58,16 +44,12 @@ function update(request){
     author.wikiLink = request.wikiLink;
 
     return author.save();
-  }).catch(function(err){
-    return err;
-  });
+  }).catch(err => err);
 }
 
-function deleteOne(request){
+function deleteOne(request) {
   return Author.findByIdAndRemove(request._id).exec()
-  .catch(function(err){
-    return err;
-  });
+  .catch(err => err);
 }
 
 module.exports.getAll = getAll;

@@ -1,55 +1,44 @@
-var db = require('./mongooseObj').db;
+const db = require('./mongooseObj').db;
 
-var Book = require("../models/book");
+const Book = require('../models/book');
 
-function getAll(){
+function getAll() {
   return Book.find({}).exec()
-  .then(function(books){
-    return books;
-  }).catch(function(err){
-    return err;
-  });
+  .then(books => books).catch(err => err);
 }
 
 function getById(request) {
   return Book.findById(request.id).exec()
-  .then(function(book){
-    return book;
-  }).catch(function(err){
-    return err;
-  });
+  .then(book => book).catch(err => err);
 }
 
 function getByName(request) {
-  return Book.findOne({'name': request.name}).exec()
-  .then(function(book){
-    return book;
-  }).catch(function(err){
-    return err;
-  });
+  return Book.findOne({ name: request.name }).exec()
+  .then(book => book).catch(err => err);
 }
 
-function insert(request){
-  var book = new Book({
+function insert(request) {
+  const book = new Book({
     name: request.name,
     author: request.author,
+    analysis: request.analysis,
     description: request.description,
     image: request.image,
     genre: request.genre,
     text: request.text,
-    year: request.year
+    year: request.year,
   });
 
-  return book.save(function(err) {
-     if (err) {
-       return err;
-     }
-   });
+  return book.save((err) => {
+    if (err) {
+      return err;
+    }
+  });
 }
 
-function update(request){
+function update(request) {
   return Book.findById(request._id).exec()
-  .then(function (book){
+  .then((book) => {
     book.name = request.name;
     book.author = request.author;
     book.description = request.description;
@@ -59,16 +48,12 @@ function update(request){
     book.year = request.year;
 
     return user.save();
-  }).catch(function (err){
-    return err;
-  });
+  }).catch(err => err);
 }
 
-function deleteOne(request){
+function deleteOne(request) {
   return Book.findByIdAndRemove(request._id).exec()
-  .catch(function (err){
-    return err;
-  });
+  .catch(err => err);
 }
 
 module.exports.getAll = getAll;
