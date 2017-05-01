@@ -40,6 +40,19 @@ function CRUD(db) {
       }
     },
 
+    getAllSimplified(req, res) {
+      if (req.method === 'GET') {
+        res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        db.getAllSimplified()
+            .then(books =>
+                res.end(JSON.stringify(books)));
+      } else {
+        res.statusCode = 400;
+        res.end();
+      }
+    },
+
     getById(req, res) {
       if (req.method === 'GET') {
         res.statusCode = 200;
