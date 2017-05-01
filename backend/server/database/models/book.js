@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
   name: String,
-  author: { type: Schema.Types.ObjectId, ref: 'Author' },
+  authorName: String,
+  authorId: String,
   analysis: { type: {
     partsOfSpeech: { type: {
       verbs: Number,

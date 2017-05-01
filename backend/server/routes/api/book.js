@@ -37,9 +37,8 @@ function saveImage(req, res) {
 
 function insert(req, res){
   analyze(req, res);
-  saveImage(req, res);
+  //saveImage(req, res);
   saveFile(req, res);
-  saveImage(req, res);
 
   CRUD.insert(req, res);
 }
