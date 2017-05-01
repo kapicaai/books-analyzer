@@ -1,8 +1,9 @@
-'use strict';
+
 const express = require('express');
-const router = express.Router();
 const db = require('../../database/DAL/authorDal');
 const CRUD = require('./common.js')(db);
+
+const router = express.Router();
 
 router.get('/', CRUD.getAll);
 
