@@ -5,7 +5,7 @@ const polarity = require('polarity');
 function mostFrequentWords(text) {
   const vocab = parser(text).getVocabulary();
   vocab.sort((a, b) => b.count - a.count);
-  return vocab.slice(0, 5).map(a => a.count);
+  return vocab.map(a => a.count).slice(0, 5);
 }
 
 function PartsOfSpeechFreq(text) {

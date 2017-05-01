@@ -33,7 +33,6 @@ function insert(request) {
     text: request.text,
     year: request.year,
   });
-
   return book.save((err) => {
     if (err) {
       return err;

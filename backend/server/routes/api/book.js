@@ -1,3 +1,4 @@
+
 const express = require('express');
 const db = require('../../database/DAL/bookDal');
 const CRUD = require('./common.js')(db);
@@ -5,15 +6,15 @@ const analyzer = require('../../domain/analyzer');
 const FileStorage = require('../../database/file_storage/fileStorage');
 
 const router = express.Router();
-const textPath = '/data';
-const imgPath = '/public/images/books';
+const textPath = '/home/yrox/gits/books-analyzer/backend/data';
+const imgPath = '/home/yrox/gits/books-analyzer/backend/public/images/books';
 
 function analyze(req, res) {
   req.body.analysis = analyzer(req.body.text);
 }
 
 function saveFile(req, res) {
-  const textStorage = FileStorage(textPath);
+  const textStorage = new FileStorage(textPath);
   try {
     const id = textStorage.addFile(req.body.text);
     req.body.text = id;
@@ -24,7 +25,7 @@ function saveFile(req, res) {
 }
 
 function saveImage(req, res) {
-  const imgStorage = FileStorage(imgPath);
+  const imgStorage = new FileStorage(imgPath);
   try {
     const id = imgStorage.addFile(req.body.image);
     req.body.image = id;
@@ -34,13 +35,23 @@ function saveImage(req, res) {
   }
 }
 
+function insert(req, res){
+  analyze(req, res);
+  saveImage(req, res);
+  saveFile(req, res);
+  saveImage(req, res);
+
+  CRUD.insert(req, res);
+}
+
+
 router.get('/simplified', CRUD.getAllSimplified);
 
 router.get('/', CRUD.getAll);
 
 router.get('/:id', CRUD.getById);
 
-router.post('/', analyze, saveFile, saveImage, CRUD.insert);
+router.post('/', insert);
 
 router.put('/', CRUD.update);
 
