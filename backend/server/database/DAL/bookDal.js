@@ -7,6 +7,11 @@ function getAll() {
   .then(books => books).catch(err => err);
 }
 
+function getAllSimplified() {
+  return Book.find({}).select('name author year image').exec()
+  .then(books => books).catch(err => err);
+}
+
 function getById(request) {
   return Book.findById(request.id).exec()
   .then(book => book).catch(err => err);
@@ -57,6 +62,7 @@ function deleteOne(request) {
 }
 
 module.exports.getAll = getAll;
+module.exports.getAllSimplified = getAllSimplified;
 module.exports.getById = getById;
 module.exports.getByName = getByName;
 module.exports.insert = insert;
