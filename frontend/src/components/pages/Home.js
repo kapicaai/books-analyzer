@@ -1,9 +1,10 @@
 /* eslint-disable */
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
-import {ObjectRestClient} from '../rest-clients/ObjectRestClient';
-import {LinkList} from './views/LinkList';
-import { resources } from '../rest-clients/RestClient';
+import {ObjectRestClient} from '../../rest-clients/ObjectRestClient';
+import {LinkList} from '../views/LinkList';
+import { resources } from '../../rest-clients/RestClient';
+import {BookList} from '../views/BookList';
 
 class Home extends Component {
     constructor(props) {
@@ -22,8 +23,8 @@ class Home extends Component {
   render() {
     return (
         <div>
-            <h1>Book analysis</h1>
-            <LinkList elements={this.state.books} resource={this.apiClient.resource}/>
+            <h1>All books</h1>
+            <BookList elements={this.state.books} resource={this.apiClient.resource}/>
         </div>
     );
   }

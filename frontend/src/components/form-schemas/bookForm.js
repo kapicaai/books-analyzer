@@ -25,6 +25,10 @@ const bookFormSchema = {
         format: "data-url",
         title: "Text of a book (txt)"
     }
+    // text : {
+    //     type: "string",
+    //     title: "Text"
+    // }
   }
 };
 

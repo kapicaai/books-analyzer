@@ -1,10 +1,9 @@
 /* eslint-disable */
 import React, { Component } from 'react';
-import { BookInfo } from './bookInfo';
-import { BookAnalysis } from './bookAnalysis';
-import { ObjectRestClient } from '../rest-clients/ObjectRestClient';
-import { resources } from '../rest-clients/RestClient';
-import bookMock from '../../mock/book.json';
+import { BookInfo } from '../views/bookInfo';
+import { BookAnalysis } from '../views/bookAnalysis';
+import { ObjectRestClient } from '../../rest-clients/ObjectRestClient';
+import { resources } from '../../rest-clients/RestClient';
 import {
   BrowserRouter as Router,
   Route,
@@ -26,7 +25,10 @@ class Book extends Component {
 
   render() {
     return (
+      <div className="book">
         <BookInfo book={this.state.book}/>
+        <BookAnalysis analysis = {this.state.book.analysis}/>
+      </div>
     );
   }
 }

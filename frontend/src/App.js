@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import './App.css';
 import '../public/styles/style.css';
-import {Book} from './components/Book';
-import {Home} from './components/Home';
-import {AddBook} from './components/AddBook';
+import {Book} from './components/pages/Book';
+import {Home} from './components/pages/Home';
+import {AddBook} from './components/pages/AddBook';
+import {AllAuthors} from './components/pages/AllAuthors';
+import {Author} from './components/pages/Author';
 import {
   BrowserRouter as Router,
   Route,
@@ -19,8 +21,9 @@ class App extends Component {
       <div className="header">
         <div className="menu">
             <Link to="/">(logo)</Link>
-            <Link to="/book">All Books</Link>
-            <Link to="/addbook">All Books</Link>
+            <Link to="/book">Books</Link>
+            <Link to="/addbook">Add new book</Link>
+            <Link to="/author">Authors</Link>
         </div>
       </div>
 
@@ -28,6 +31,8 @@ class App extends Component {
       <Route exact path="/book" component={Home}/>
       <Route path="/book/:id" component={Book}/>
       <Route path="/addbook" component={AddBook}/>
+      <Route exact path="/author" component={AllAuthors}/>
+      <Route path="/author/:id" component={Author}/>
       </div>
       </Router>
     );

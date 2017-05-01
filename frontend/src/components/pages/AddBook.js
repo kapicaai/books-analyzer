@@ -1,9 +1,9 @@
 /* eslint-disable */
 import React, { Component } from 'react';
-import { BookInfo } from './bookInfo';
-import { BookAnalysis } from './bookAnalysis';
-import {ObjectRestClient} from '../rest-clients/ObjectRestClient';
-import { resources } from '../rest-clients/RestClient';
+import { BookInfo } from '../views/bookInfo';
+import { BookAnalysis } from '../views/bookAnalysis';
+import {ObjectRestClient} from '../../rest-clients/ObjectRestClient';
+import { resources } from '../../rest-clients/RestClient';
 import {
   BrowserRouter as Router,
   Route,
@@ -11,17 +11,18 @@ import {
   Redirect
 } from 'react-router-dom';
 import Form from "react-jsonschema-form";
-import {bookFormSchema} from './form-schemas/bookForm';
+import {bookFormSchema} from '../form-schemas/bookForm';
 
 class AddBook extends Component {
 
   render() {
     const postBook = ({formData}) => {
     let restClient = new ObjectRestClient(resources.book);
-    restClient.postObject(JSON.parse(formData));
+    restClient.postObject(formData);
+    console.log(formData);
     setTimeout(function() {
-        (<Redirect to="/book"/>);
-    }, 5);
+        window.location.replace('/book');
+    }, 500);
   };
   console.log(bookFormSchema);
     return (

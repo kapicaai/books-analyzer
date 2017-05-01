@@ -2,6 +2,8 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 
 function BriefBookItem(props) {
+    if(!props.element.author)
+        props.element.author = {name:"No author"};
   return (<li>
     <div className="brief-book">
         <img className='book-img-preview' src={props.element.image} alt={props.element.name}/>
@@ -12,6 +14,7 @@ function BriefBookItem(props) {
 }
 
 function BookList(props) {
+    console.log(props.elements);
     return (props.elements[0] ? (
         <ul>
             {props.elements.map((element) => 
@@ -24,4 +27,4 @@ function BookList(props) {
     ));
 }
 
-export {LinkItem, LinkList};
+export {BriefBookItem, BookList};

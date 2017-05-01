@@ -6,8 +6,8 @@ const analyzer = require('../../domain/analyzer');
 const FileStorage = require('../../database/file_storage/fileStorage');
 
 const router = express.Router();
-const textPath = '/home/yrox/gits/books-analyzer/backend/data';
-const imgPath = '/home/yrox/gits/books-analyzer/backend/public/images/books';
+const textPath = 'data';
+const imgPath = 'public/images/books';
 
 function analyze(req, res) {
   req.body.analysis = analyzer(req.body.text);
@@ -36,6 +36,7 @@ function saveImage(req, res) {
 }
 
 function insert(req, res){
+  req.body.text = new Buffer(req.body.text, 'base64').toString('utf8');
   analyze(req, res);
   //saveImage(req, res);
   saveFile(req, res);
