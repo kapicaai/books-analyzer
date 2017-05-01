@@ -5,6 +5,8 @@ const CRUD = require('./common.js')(db);
 
 const router = express.Router();
 
+router.get('/simplified', CRUD.getAllSimplified);
+
 router.get('/', CRUD.getAll);
 
 router.get('/:id', CRUD.getById);

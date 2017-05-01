@@ -8,6 +8,11 @@ function getAll() {
   .then(authors => authors).catch(err => err);
 }
 
+function getAllSimplified() {
+  return Author.find({}).select('name').exec()
+  .then(authors => authors).catch(err => err);
+}
+
 function getById(request) {
   return Author.findById(request.id).exec()
   .then(author => author).catch(err => err);
@@ -53,6 +58,7 @@ function deleteOne(request) {
 }
 
 module.exports.getAll = getAll;
+module.exports.getAllSimplified = getAllSimplified;
 module.exports.getById = getById;
 module.exports.getByName = getByName;
 module.exports.insert = insert;

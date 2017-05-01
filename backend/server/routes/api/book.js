@@ -36,6 +36,8 @@ function saveImage(req, res) {
   }
 }
 
+router.get('/simplified', CRUD.getAllSimplified);
+
 router.get('/', CRUD.getAll);
 
 router.get('/:id', CRUD.getById);
