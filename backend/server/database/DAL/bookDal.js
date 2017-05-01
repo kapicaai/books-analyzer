@@ -8,7 +8,7 @@ function getAll() {
 }
 
 function getAllSimplified() {
-  return Book.find({}).select('name author year image').exec()
+  return Book.find({}).select('name authorName year image').exec()
   .then(books => books).catch(err => err);
 }
 
@@ -25,7 +25,8 @@ function getByName(request) {
 function insert(request) {
   const book = new Book({
     name: request.name,
-    author: request.author,
+    authorName: request.authorName,
+    authorId: request.authorId,
     analysis: request.analysis,
     description: request.description,
     image: request.image,
@@ -44,7 +45,8 @@ function update(request) {
   return Book.findById(request._id).exec()
   .then((book) => {
     book.name = request.name;
-    book.author = request.author;
+    book.authorName = request.authorName;
+    book.authorId = request.authorId;
     book.description = request.description;
     book.image = request.image;
     book.genre = request.genre;

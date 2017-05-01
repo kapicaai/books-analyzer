@@ -9,7 +9,6 @@ class FileStorage {
   addFile(file) {
     const uid = guid.v1();
     try {
-      console.log(this.path);
       fs.writeFileSync(`${this.path}/${uid}`, file);
       return uid;
     } catch (err) {
