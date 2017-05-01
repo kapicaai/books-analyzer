@@ -5,7 +5,8 @@ const polarity = require('polarity');
 function mostFrequentWords(text) {
   const vocab = parser(text).getVocabulary();
   vocab.sort((a, b) => b.count - a.count);
-  return vocab.map(a => a.count).slice(0, 5);
+  //vocab.map(a => a.count).slice(0, 3);
+  return vocab.slice(0, 5);
 }
 
 function PartsOfSpeechFreq(text) {
@@ -20,6 +21,7 @@ function Analysis(text) {
   this.averageSentenceLength = parser(text).getAverageSentLength();
   this.mostFrequentWords = mostFrequentWords(text);
   this.sentiments = polarity(parser(text).getUniqueWordsList());
+  this.wordsCount = parser(text).countAllWords();
 }
 
 function getAnalysis(text) {

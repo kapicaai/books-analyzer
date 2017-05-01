@@ -2,12 +2,19 @@ const splitter = require('sentence-splitter');
 const tm = require('text-miner');
 
 let normalizedCorpus;
+let fullNormalizedCorpus;
 let sentences;
 
 function getNormalizedCorpus(text, stopWords) {
   const corpus = tm.Corpus(text);
   corpus.toLower().removeDigits().removeInterpunctuation().removeNewlines();
   corpus.removeWords(tm.STOPWORDS.EN);
+  return corpus;
+}
+
+function getFullNormalizedCorpus(text) {
+  const corpus = tm.Corpus(text);
+  corpus.toLower().removeDigits().removeInterpunctuation().removeNewlines();
   return corpus;
 }
 
@@ -19,11 +26,18 @@ function getSentences(text) {
 
 function PARSER(text) {
   normalizedCorpus = getNormalizedCorpus(text);
+  fullNormalizedCorpus = getFullNormalizedCorpus(text);
   sentences = getSentences(text);
 
   return {
     getUniqueWordsList() {
       return tm.Terms(normalizedCorpus).vocabulary;
+    },
+
+    countAllWords() {
+      const arr = tm.Terms(fullNormalizedCorpus).dtm[0];
+      const result = arr.reduce((sum, current) => sum + current, 0);
+      return result;
     },
 
     countWords() {

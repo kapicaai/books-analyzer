@@ -14,6 +14,7 @@ const bookSchema = new Schema({
       adverbs: Number,
     } },
     averageSentenceLength: Number,
+    wordsCount: Number,
     mostFequentWords: [String],
     sentiments: { type: {
       polarity: Number,
