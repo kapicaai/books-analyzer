@@ -1,21 +1,19 @@
 const splitter = require('sentence-splitter');
 const tm = require('text-miner');
 
-var normalizedCorpus;
-var sentences;
+let normalizedCorpus;
+let sentences;
 
 function getNormalizedCorpus(text, stopWords) {
-  var corpus = tm.Corpus(text);
+  const corpus = tm.Corpus(text);
   corpus.toLower().removeDigits().removeInterpunctuation().removeNewlines();
-  corpus.removeWords(tm.STOPWORDS.EN)
+  corpus.removeWords(tm.STOPWORDS.EN);
   return corpus;
 }
 
 function getSentences(text) {
-  var allTokens = splitter.split(text);
-  var result = allTokens.filter(function (token) {
-  return token.type === splitter.Syntax.Sentence;
-});
+  const allTokens = splitter.split(text);
+  const result = allTokens.filter(token => token.type === splitter.Syntax.Sentence);
   return result;
 }
 
@@ -29,18 +27,16 @@ function PARSER(text) {
     },
 
     countWords() {
-      var arr = tm.Terms(normalizedCorpus).dtm[0];
-      var result = arr.reduce(function (sum, current) {
-          return sum + current;
-        }, 0);
+      const arr = tm.Terms(normalizedCorpus).dtm[0];
+      const result = arr.reduce((sum, current) => sum + current, 0);
       return result;
     },
 
     getVocabulary() {
-      var terms = tm.Terms(normalizedCorpus);
-      var result = [];
-      for (var i = 0; i < terms.vocabulary.length; i++) {
-        result.push({word: terms.vocabulary[i], count: terms.dtm[0][i]});
+      const terms = tm.Terms(normalizedCorpus);
+      const result = [];
+      for (let i = 0; i < terms.vocabulary.length; i++) {
+        result.push({ word: terms.vocabulary[i], count: terms.dtm[0][i] });
       }
       return result;
     },
@@ -49,16 +45,16 @@ function PARSER(text) {
       return sentences.length;
     },
 
-//TODO correct word splitting
+// TODO correct word splitting
     getAverageSentLength() {
-      var allWords = 0;
+      let allWords = 0;
       for (let i = 0; i < sentences.length; i++) {
         allWords += sentences[i].value.split(/\s+/).length;
       }
       return allWords / sentences.length;
-    }
+    },
 
-  }
+  };
 }
 
 module.exports = PARSER;
