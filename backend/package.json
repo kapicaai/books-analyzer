@@ -28,6 +28,7 @@
     "sentence-splitter": "^2.2.0",
     "serve-favicon": "^2.4.2",
     "text-miner": "^1.0.5",
+    "uuid": "^3.0.1",
     "wordpos": "^1.1.2"
   },
   "devDependencies": {

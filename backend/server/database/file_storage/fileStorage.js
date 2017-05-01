@@ -1,5 +1,5 @@
 const fs = require('fs');
-const guid = require('node-uuid');
+const guid = require('uuid');
 
 class FileStorage {
   constructor(path) {

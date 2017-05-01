@@ -1,4 +1,3 @@
-
 const express = require('express');
 const db = require('../../database/DAL/authorDal');
 const CRUD = require('./common.js')(db);
