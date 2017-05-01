@@ -4,22 +4,22 @@ const Schema = mongoose.Schema;
 
 const bookSchema = new Schema({
   name: String,
-  author: [{ type: Schema.Types.ObjectId, ref: 'Author' }],
-  analysis: { type: [{
-    partsOfSpeech: { type: [{
+  author: { type: Schema.Types.ObjectId, ref: 'Author' },
+  analysis: { type: {
+    partsOfSpeech: { type: {
       verbs: Number,
       nouns: Number,
       adjectives: Number,
       adverbs: Number,
-    }] },
+    } },
     averageSentenceLength: Number,
     mostFequentWords: [String],
-    sentiments: { type: [{
+    sentiments: { type: {
       polarity: Number,
       positivity: Number,
       negativity: Number,
-    }] },
-  }] },
+    } },
+  } },
   description: String,
   image: String,
   genre: [String],
