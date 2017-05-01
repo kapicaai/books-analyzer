@@ -1,32 +1,33 @@
-var WordPOS = require('wordpos');
-var parser = require('./parser');
-var POS = new WordPOS();
+const WordPOS = require('wordpos');
+const parser = require('./parser');
 
-var verbs;
-var nouns;
-var adjectives;
-var adverbs;
+const POS = new WordPOS();
+
+let verbs;
+let nouns;
+let adjectives;
+let adverbs;
 
 function countVerbs(text) {
-  POS.getVerbs(text, function (result) {
+  POS.getVerbs(text, (result) => {
     verbs = result.length;
   });
 }
 
 function countNouns(text) {
-  POS.getNouns(text, function (result) {
+  POS.getNouns(text, (result) => {
     nouns = result.length;
   });
 }
 
 function countAdjectives(text) {
-  POS.getAdjectives(text, function (result) {
+  POS.getAdjectives(text, (result) => {
     adjectives = result.length;
   });
 }
 
 function countAdverbs(text) {
-  POS.getAdverbs(text, function (result) {
+  POS.getAdverbs(text, (result) => {
     adverbs = result.length;
   });
 }
@@ -37,8 +38,8 @@ function partsOfSpeech(text) {
   countAdjectives(text);
   countAdverbs(text);
   return {
-    verbs, nouns, adjectives, adverbs
-  }
+    verbs, nouns, adjectives, adverbs,
+  };
 }
 
 module.exports = partsOfSpeech;
