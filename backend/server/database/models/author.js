@@ -1,13 +1,14 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
-var authorSchema = new Schema({
+const Schema = mongoose.Schema;
+
+const authorSchema = new Schema({
   name: String,
-  books: [{type: Schema.Types.ObjectId, ref: 'Book'}],
+  books: [{ type: Schema.Types.ObjectId, ref: 'Book' }],
   portrait: String,
   info: String,
-  wikiLink: { type: String, match: [/(https?:\/\/)?(www\.)?(.*)/g] }
+  wikiLink: { type: String, match: [/(https?:\/\/)?(www\.)?(.*)/g] },
 });
 
-var Author  = mongoose.model('Author', authorSchema);
+const Author = mongoose.model('Author', authorSchema);
 module.exports = Author;

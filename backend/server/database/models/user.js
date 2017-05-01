@@ -1,13 +1,14 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
-var userSchema = new Schema({
+const Schema = mongoose.Schema;
+
+const userSchema = new Schema({
   name: String,
   passwordCache: String,
   email: String,
-  books: [{type: Schema.Types.ObjectId, ref: 'Book'}],
-  authors: [{type: Schema.Types.ObjectId, ref: 'Author'}],
+  books: [{ type: Schema.Types.ObjectId, ref: 'Book' }],
+  authors: [{ type: Schema.Types.ObjectId, ref: 'Author' }],
 });
 
-var User = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;
